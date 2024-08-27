@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:8001
+
+### Zipper
+POST {{baseUrl}}/zipper
+Content-Type: application/json
+Authorization: kimak
+
+{
+    "source" : [
+        {
+            "title" : "Doc 1",
+            "path" : "secured/claim/smple1.pdf"
+        },
+        {
+            "title" : "Doc 2",
+            "path" : "secured/claim/smple2.pdf"
+        },
+        {
+            "title" : "Doc 3",
+            "path" : "secured/claim/smple3.pdf"
+        }
+    ],
+    "outputFileName" : "001-Enrollment",
+    "targetDir" : "secured/claim/result"
+}
+
+### Merger
+POST {{baseUrl}}/merger
+Content-Type: application/json
+Authorization: kimak
+
+{
+    "source" : [
+        {
+            "title" : "Doc 1",
+            "path" : "secured/claim/smple1.pdf"
+        },
+        {
+            "title" : "Doc 2",
+            "path" : "secured/claim/smple2.pdf"
+        },
+        {
+            "title" : "Doc 3",
+            "path" : "secured/claim/smple3.pdf"
+        }
+    ],
+    "outputFileName" : "001-Enrollment",
+    "targetDir" : "secured/claim/result"
+}

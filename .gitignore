@@ -1,0 +1,8 @@
+.env*
+
+.idx/
+
+*.pdf
+
+# Exclusion
+!.env.example

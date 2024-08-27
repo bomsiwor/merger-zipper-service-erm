@@ -1,0 +1,14 @@
+name: test-claim-service
+version: '3.7'
+
+services:
+  file-service:
+    image: testing:latest
+    container_name: testing-cont
+    ports:
+      - 8000:8001
+    volumes:
+      - /home/user/vol-testing/staging:/app/doc/staging
+      - /home/user/vol-testing/production:/app/doc/production
+    env_file:
+      - .env.production
