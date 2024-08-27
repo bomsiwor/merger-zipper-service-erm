@@ -40,7 +40,7 @@ func CreateZip(outputFilename *string, inputFiles entity.Documents, workdir, out
 	zipWriter := zip.NewWriter(zipFile)
 	defer zipWriter.Close()
 
-	for _, input := range inputFiles {
+	for i, input := range inputFiles {
 		// Open file
 		sourcePath := fmt.Sprintf("%s/%s", workdir, input.Path)
 
@@ -53,7 +53,7 @@ func CreateZip(outputFilename *string, inputFiles entity.Documents, workdir, out
 		// Get fileext
 		ext := filepath.Ext(input.Path)
 
-		f, err := zipWriter.Create(input.Name + "." + ext)
+		f, err := zipWriter.Create(fmt.Sprintf("%d-%s.%s", i+1, input.Name, ext))
 		if err != nil {
 			return "", err
 		}
