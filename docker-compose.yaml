@@ -1,9 +1,11 @@
-name: test-claim-service
+name: mapper-zipper-cont
 version: '3.7'
 
 services:
   file-service:
-    image: testing:latest
+    image: mapper-zipper
+    build:
+      context: .
     container_name: testing-cont
     ports:
       - 8000:8001
