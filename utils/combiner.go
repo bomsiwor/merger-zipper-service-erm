@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"mymodule/entity"
+	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -90,8 +91,9 @@ func convertAllToPdf(src []string) ([]string, []string, error) {
 
 		// COnvert image to pdf
 		// Generate temp path filename
+		wd, _ := os.Getwd()
 		tempFilePath := GetFileNameFromPath(source) + ".pdf"
-		tempPath := filepath.Join("doc", "temp", tempFilePath)
+		tempPath := filepath.Join(wd, "doc", "temp", tempFilePath)
 
 		// Start converting
 		err := ConvertImageToPdf([]string{source}, tempPath)
