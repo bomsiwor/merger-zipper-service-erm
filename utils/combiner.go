@@ -83,7 +83,7 @@ func convertAllToPdf(src []string) ([]string, []string, error) {
 	// PDF file pushed to finalPath
 	for _, source := range src {
 		// Check pdf file
-		if IsValidPdfMime(source) {
+		if filepath.Ext(source) == ".pdf" {
 			finalPath = append(finalPath, source)
 			continue
 		}

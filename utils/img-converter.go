@@ -7,7 +7,6 @@ import (
 	"image/jpeg"
 	"image/png"
 	"io"
-	"log"
 	"os"
 
 	"github.com/jung-kurt/gofpdf"
@@ -24,8 +23,7 @@ func ConvertImageToPdf(src []string, output string) error {
 	err := converter(src, output)
 
 	if err != nil {
-		log.Fatalf("Error converting to PDF : %v", err.Error())
-
+		fmt.Printf("Error converting to PDF : %v", err.Error())
 		return err
 	}
 
