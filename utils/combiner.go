@@ -45,7 +45,7 @@ func CombinePdf(outputFilename *string, inputFiles entity.Documents, workdir, ou
 
 	// Check if all file is PDF, if isn't convert it to PDF
 	// temp file will deleted merging proces already done
-	finalInputFile, tempFiles, err := convertAllToPdf(finalInputFile)
+	finalInputFile, tempFiles, err := convertAllToPdf(finalInputFile, workdir)
 	if err != nil {
 		return "", err
 	}
@@ -73,7 +73,7 @@ func CombinePdf(outputFilename *string, inputFiles entity.Documents, workdir, ou
 // This function check if all data if pdf.
 // If there is an image, convert it to pdf and store it on temporary folder.
 // Then push path to finalPath. Return converted path, so the function caller can delete the temporary file
-func convertAllToPdf(src []string) ([]string, []string, error) {
+func convertAllToPdf(src []string, superFolder string) ([]string, []string, error) {
 	// Variable to store temporary file path
 	tempFiles := []string{}
 
@@ -93,7 +93,7 @@ func convertAllToPdf(src []string) ([]string, []string, error) {
 		// Generate temp path filename
 		wd, _ := os.Getwd()
 		tempFilePath := GetFileNameFromPath(source) + ".pdf"
-		tempPath := filepath.Join(wd, "doc", "temp", tempFilePath)
+		tempPath := filepath.Join(wd, "doc", superFolder, "temp", tempFilePath)
 
 		// Start converting
 		err := ConvertImageToPdf([]string{source}, tempPath)

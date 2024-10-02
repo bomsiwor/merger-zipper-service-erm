@@ -4,5 +4,9 @@
 
 *.pdf
 
+doc/
+
+docker-compose.yaml
+
 # Exclusion
 !.env.example
