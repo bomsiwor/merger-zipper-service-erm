@@ -37,6 +37,13 @@ func converter(imgPaths []string, output string) error {
 	for _, imagePath := range imgPaths {
 		file, err := os.Open(imagePath)
 		if err != nil {
+			// If a file is not exists
+			// Ignore the file
+			// return nil value
+			if os.IsNotExist(err) {
+				return nil
+			}
+
 			return fmt.Errorf("failed to open image: %w", err)
 		}
 		defer file.Close()

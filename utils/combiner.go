@@ -3,6 +3,7 @@ package utils
 import (
 	"errors"
 	"fmt"
+	"log"
 	"mymodule/entity"
 	"os"
 	"path/filepath"
@@ -98,6 +99,7 @@ func convertAllToPdf(src []string, superFolder string) ([]string, []string, erro
 		// Start converting
 		err := ConvertImageToPdf([]string{source}, tempPath)
 		if err != nil {
+			log.Println(err)
 			return finalPath, tempFiles, err
 		}
 
