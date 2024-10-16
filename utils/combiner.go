@@ -94,7 +94,7 @@ func convertAllToPdf(src []string, superFolder string) ([]string, []string, erro
 		// Generate temp path filename
 		wd, _ := os.Getwd()
 		tempFilePath := GetFileNameFromPath(source) + ".pdf"
-		tempPath := filepath.Join(wd, "doc", superFolder, "temp", tempFilePath)
+		tempPath := filepath.Join(wd, superFolder, "temp", tempFilePath)
 
 		// Start converting
 		err := ConvertImageToPdf([]string{source}, tempPath)
